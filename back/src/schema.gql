@@ -1,0 +1,310 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Medecine {
+  id: Int!
+  currentSalePrice: Float!
+  currentVat: Float!
+}
+
+type Provider {
+  """Example field (placeholder)"""
+  id: Int!
+
+  """Example field (placeholder)"""
+  name: Int!
+  phone: String!
+  address: String!
+  email: String!
+  logo: String!
+}
+
+type Command {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Invoice {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Stockmanagement {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Stock {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Unit {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Sale {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Ordonance {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Patient {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Person {
+  id: Int!
+  lastName: String!
+  firstName: String!
+  email: String!
+  phone: String!
+  avatar: String!
+  gender: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: Int!
+  password: String!
+  verifiedAt: DateTime
+  role: Float!
+  active: Boolean!
+  person: Person!
+}
+
+type LoginDto {
+  token: String!
+  user: User!
+}
+
+type Meta {
+  itemCount: Float!
+  totalItems: Float
+  itemsPerPage: Float!
+  totalPages: Float
+  currentPage: Float!
+}
+
+type UserPagination {
+  items: [User!]!
+  meta: Meta!
+}
+
+type Query {
+  hello: String!
+  medecine(id: Int!): Medecine!
+  provider(id: Int!): Provider!
+  command(id: Int!): Command!
+  invoice(id: Int!): Invoice!
+  stockmanagement(id: Int!): Stockmanagement!
+  stock(id: Int!): Stock!
+  unit(id: Int!): Unit!
+  sale(id: Int!): Sale!
+  ordonance(id: Int!): Ordonance!
+  patient(id: Int!): Patient!
+  login(input: AuthInput!): LoginDto!
+  whoAmI: User!
+  paginateUsers(input: PaginateUserInput!): UserPagination!
+}
+
+input AuthInput {
+  email: String!
+  password: String!
+}
+
+input PaginateUserInput {
+  keyword: String
+  page: Float!
+  limit: Float!
+  filter: [String!]!
+}
+
+type Mutation {
+  createMedecine(input: CreateMedecineInput!): Medecine!
+  updateMedecineInput(updateMedecineInput: UpdateMedecineInput!): Medecine!
+  removeMedecine(id: Int!): Medecine!
+  createProvider(createProviderInput: CreateProviderInput!): Provider!
+  updateProvider(updateProviderInput: UpdateProviderInput!): Provider!
+  removeProvider(id: Int!): Provider!
+  createCommand(createCommandInput: CreateCommandInput!): Command!
+  updateCommand(updateCommandInput: UpdateCommandInput!): Command!
+  removeCommand(id: Int!): Command!
+  createInvoice(createInvoiceInput: CreateInvoiceInput!): Invoice!
+  updateInvoice(updateInvoiceInput: UpdateInvoiceInput!): Invoice!
+  removeInvoice(id: Int!): Invoice!
+  createStockmanagement(createStockmanagementInput: CreateStockmanagementInput!): Stockmanagement!
+  updateStockmanagement(updateStockmanagementInput: UpdateStockmanagementInput!): Stockmanagement!
+  removeStockmanagement(id: Int!): Stockmanagement!
+  createStock(createStockInput: CreateStockInput!): Stock!
+  updateStock(updateStockInput: UpdateStockInput!): Stock!
+  removeStock(id: Int!): Stock!
+  createUnit(createUnitInput: CreateUnitInput!): Unit!
+  updateUnit(updateUnitInput: UpdateUnitInput!): Unit!
+  removeUnit(id: Int!): Unit!
+  createSale(createSaleInput: CreateSaleInput!): Sale!
+  updateSale(updateSaleInput: UpdateSaleInput!): Sale!
+  removeSale(id: Int!): Sale!
+  createOrdonance(createOrdonanceInput: CreateOrdonanceInput!): Ordonance!
+  updateOrdonance(updateOrdonanceInput: UpdateOrdonanceInput!): Ordonance!
+  removeOrdonance(id: Int!): Ordonance!
+  createPatient(createPatientInput: CreatePatientInput!): Patient!
+  updatePatient(updatePatientInput: UpdatePatientInput!): Patient!
+  removePatient(id: Int!): Patient!
+  createUser(avatar: Upload!, input: CreateUserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
+  updatePassword(input: UpdatePasswordInput!): User
+  updatePersonAvatar(avatar: Upload!, id: Int!): Person!
+}
+
+input CreateMedecineInput {
+  currentSalePrice: Float!
+  currentVat: Float!
+}
+
+input UpdateMedecineInput {
+  currentSalePrice: Float
+  currentVat: Float
+  id: Int!
+}
+
+input CreateProviderInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProviderInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCommandInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCommandInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateInvoiceInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateInvoiceInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateStockmanagementInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateStockmanagementInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateStockInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateStockInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUnitInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUnitInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateSaleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateSaleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateOrdonanceInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateOrdonanceInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreatePatientInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdatePatientInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateUserInput {
+  lastName: String!
+  firstName: String!
+  email: String!
+  phone: String!
+  gender: Float!
+  password: String!
+}
+
+input UpdateUserInput {
+  lastName: String!
+  firstName: String!
+  email: String!
+  phone: String!
+  gender: Float!
+  id: Int!
+  role: Int!
+  active: Boolean!
+}
+
+input UpdatePasswordInput {
+  currentPassword: String!
+  newPassword: String!
+}
