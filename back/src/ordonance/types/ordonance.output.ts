@@ -1,4 +1,4 @@
-import { CreateOrdonanceInput } from './create-ordonance.input';
+import { CreateOrdonanceInput } from './ordonance.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()

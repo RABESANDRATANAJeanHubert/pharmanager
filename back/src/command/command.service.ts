@@ -1,15 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCommandInput } from './dto/create-command.input';
-import { UpdateCommandInput } from './dto/update-command.input';
+
+import { UpdateCommandInput } from './types/command.output';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Command } from './command.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CommandService {
-  create(createCommandInput: CreateCommandInput) {
-    return 'This action adds a new command';
+  constructor(
+    @InjectRepository(Command)
+    private repository: Repository<Command>,
+  ) { }
+  
+  async save(command: Command): Promise<Command> {
+    return this.repository.save(command);
   }
 
   findAll() {
-    return `This action returns all command`;
+    return this.repository.find({
+      order: { createdAt: 'ASC', archivedAt: 'ASC' },
+    });
   }
 
   findOne(id: number) {

@@ -8,7 +8,6 @@ import { UpdateMedecineInput } from './types/medecine.output';
 export class MedecineResolver {
   // access a notre service
   constructor(private medecineService: MedecineService) {}
-
   //Permet de creer une country
   @Mutation(() => Medecine)
   //@args  c'est un Argument
@@ -18,7 +17,6 @@ export class MedecineResolver {
     Object.assign(medicines, input);
     return this.medecineService.save(medicines);
   }
-
 // this resolver  can be update new data from medecine
 // Permet de modifier un nouveau country
 @Mutation(() => Medecine)
@@ -29,15 +27,20 @@ export class MedecineResolver {
       updateMedecineInput.id,
       updateMedecineInput,
     );
+  }
+  @Mutation(() => Medecine)
+  removeMedecine(@Args('id', { type: () => Int }) id: number) {
+    return this.medecineService.remove(id);
 }
-
+  // Resolver for searching all data list
+  @Query(() => Medecine, { name: 'medecine' })
+medecines(){
+    return this.medecineService.findAll();
+  }
+   
 @Query(() => Medecine, { name: 'medecine' })
 findOne(@Args('id', { type: () => Int }) id: number) {
   return this.medecineService.findOne(id);
 }
 
-@Mutation(() => Medecine)
-removeMedecine(@Args('id', { type: () => Int }) id: number) {
-  return this.medecineService.remove(id);
-}
 }

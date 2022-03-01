@@ -1,19 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePatientInput } from './dto/create-patient.input';
-import { UpdatePatientInput } from './dto/update-patient.input';
+import { CreatePatientInput } from './types/patient.input';
+import { UpdatePatientInput } from './types/patient.output';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Patient } from './patient.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PatientService {
-  create(createPatientInput: CreatePatientInput) {
-    return 'This action adds a new patient';
-  }
 
+  constructor(
+    @InjectRepository(Patient)
+    private repository: Repository<Patient>,
+  ) { }
+
+  async save(patient: Patient): Promise<Patient>{
+    return this.repository.save(patient)
+  }
+  
   findAll() {
-    return `This action returns all patient`;
+    return this.repository.find({order:{firstName:'ASC',lastName:'ASC',phone:'ASC'}})
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} patient`;
+  findByPhone(phone: number) {
+    return this.repository.findOne({where:{phone:'phone'}});
   }
 
   update(id: number, updatePatientInput: UpdatePatientInput) {

@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProviderService } from './provider.service';
 import { Provider } from './provider.entity';
-import { CreateProviderInput } from './dto/create-provider.input';
-import { UpdateProviderInput } from './dto/update-provider.input';
+import { CreateProviderInput } from './types/provider.input';
+import { UpdateProviderInput } from './types/provider.output';
 
 @Resolver(() => Provider)
 export class ProviderResolver {

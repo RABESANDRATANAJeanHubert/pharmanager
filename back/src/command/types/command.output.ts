@@ -1,4 +1,4 @@
-import { CreateCommandInput } from './create-command.input';
+import { CreateCommandInput } from './command.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()

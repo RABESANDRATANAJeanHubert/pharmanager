@@ -1,4 +1,4 @@
-import { CreatePatientInput } from './create-patient.input';
+import { CreatePatientInput } from './patient.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()

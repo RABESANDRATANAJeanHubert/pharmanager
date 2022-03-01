@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProviderInput } from './dto/create-provider.input';
-import { UpdateProviderInput } from './dto/update-provider.input';
+import { CreateProviderInput } from './types/provider.input';
+import { UpdateProviderInput } from './types/provider.output';
 
 @Injectable()
 export class ProviderService {

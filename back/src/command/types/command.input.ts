@@ -2,6 +2,10 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateCommandInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+
+  @Field()
+  createdAt: Date;
+  
+  @Field()
+  archivedAt: Date;
 }

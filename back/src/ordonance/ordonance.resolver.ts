@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { OrdonanceService } from './ordonance.service';
-import { Ordonance } from './entities/ordonance.entity';
-import { CreateOrdonanceInput } from './dto/create-ordonance.input';
-import { UpdateOrdonanceInput } from './dto/update-ordonance.input';
+import { Ordonance } from './ordonance.entity';
+import { CreateOrdonanceInput } from './types/ordonance.input';
+import { UpdateOrdonanceInput } from './types/ordonance.output';
 
 @Resolver(() => Ordonance)
 export class OrdonanceResolver {
@@ -13,8 +13,8 @@ export class OrdonanceResolver {
     return this.ordonanceService.create(createOrdonanceInput);
   }
 
-  @Query(() => [Ordonance], { name: 'ordonance' })
-  findAll() {
+  @Query(() => [Ordonance])
+  ordonances() {
     return this.ordonanceService.findAll();
   }
 

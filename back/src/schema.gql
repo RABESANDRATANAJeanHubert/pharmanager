@@ -22,12 +22,22 @@ type Provider {
 
 type Command {
   """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  createdAt: DateTime!
+  archivedAt: DateTime!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Invoice {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  deliveryDate: DateTime!
+  dueDate: DateTime!
+  reference: String!
+  expense: Float!
 }
 
 type Stockmanagement {
@@ -52,12 +62,17 @@ type Sale {
 
 type Ordonance {
   """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  reference: String!
+  description: String!
 }
 
 type Patient {
   """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  lastName: String!
+  firstName: String!
+  phone: Float!
 }
 
 type Person {
@@ -72,11 +87,6 @@ type Person {
   updatedAt: DateTime!
   user: User
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type User {
   id: Int!
@@ -109,13 +119,17 @@ type Query {
   hello: String!
   medecine(id: Int!): Medecine!
   provider(id: Int!): Provider!
+  commands: [Command!]!
   command(id: Int!): Command!
+  invoices: [Invoice!]!
   invoice(id: Int!): Invoice!
   stockmanagement(id: Int!): Stockmanagement!
   stock(id: Int!): Stock!
   unit(id: Int!): Unit!
   sale(id: Int!): Sale!
+  ordonances: [Ordonance!]!
   ordonance(id: Int!): Ordonance!
+  patients: [Patient!]!
   patient(id: Int!): Patient!
   login(input: AuthInput!): LoginDto!
   whoAmI: User!
@@ -141,10 +155,10 @@ type Mutation {
   createProvider(createProviderInput: CreateProviderInput!): Provider!
   updateProvider(updateProviderInput: UpdateProviderInput!): Provider!
   removeProvider(id: Int!): Provider!
-  createCommand(createCommandInput: CreateCommandInput!): Command!
+  createCommand(input: CreateCommandInput!): Command!
   updateCommand(updateCommandInput: UpdateCommandInput!): Command!
   removeCommand(id: Int!): Command!
-  createInvoice(createInvoiceInput: CreateInvoiceInput!): Invoice!
+  createInvoice(input: CreateInvoiceInput!): Invoice!
   updateInvoice(updateInvoiceInput: UpdateInvoiceInput!): Invoice!
   removeInvoice(id: Int!): Invoice!
   createStockmanagement(createStockmanagementInput: CreateStockmanagementInput!): Stockmanagement!
@@ -162,7 +176,7 @@ type Mutation {
   createOrdonance(createOrdonanceInput: CreateOrdonanceInput!): Ordonance!
   updateOrdonance(updateOrdonanceInput: UpdateOrdonanceInput!): Ordonance!
   removeOrdonance(id: Int!): Ordonance!
-  createPatient(createPatientInput: CreatePatientInput!): Patient!
+  createPatient(input: CreatePatientInput!): Patient!
   updatePatient(updatePatientInput: UpdatePatientInput!): Patient!
   removePatient(id: Int!): Patient!
   createUser(avatar: Upload!, input: CreateUserInput!): User!
@@ -194,24 +208,28 @@ input UpdateProviderInput {
 }
 
 input CreateCommandInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  createdAt: DateTime!
+  archivedAt: DateTime!
 }
 
 input UpdateCommandInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  createdAt: DateTime
+  archivedAt: DateTime
   id: Int!
 }
 
 input CreateInvoiceInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  deliveryDate: DateTime!
+  dueDate: DateTime!
+  reference: String!
+  expense: String!
 }
 
 input UpdateInvoiceInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  deliveryDate: DateTime
+  dueDate: DateTime
+  reference: String
+  expense: String
   id: Int!
 }
 
@@ -260,24 +278,26 @@ input UpdateSaleInput {
 }
 
 input CreateOrdonanceInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  reference: String!
+  description: String!
 }
 
 input UpdateOrdonanceInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  reference: String
+  description: String
   id: Int!
 }
 
 input CreatePatientInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  lastName: String!
+  firstName: String!
+  phone: Float!
 }
 
 input UpdatePatientInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  lastName: String
+  firstName: String
+  phone: Float
   id: Int!
 }
 

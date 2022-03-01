@@ -1,4 +1,4 @@
-import { CreateInvoiceInput } from './create-invoice.input';
+import { CreateInvoiceInput } from './invoice.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()

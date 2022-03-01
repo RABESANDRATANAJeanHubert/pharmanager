@@ -1,4 +1,4 @@
-import { CreateProviderInput } from './create-provider.input';
+import { CreateProviderInput } from './provider.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
